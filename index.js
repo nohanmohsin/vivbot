@@ -52,7 +52,7 @@ client.on('message', async(message) =>{
 
 	client.events.get('xp event').execute(message);
 
-
+	//music commands
 	if(command === 'play'){
 		client.commands.get('play').execute(message, args, distube);
 	}
@@ -70,6 +70,14 @@ client.on('message', async(message) =>{
 	}
 	if ([`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`].includes(command)){
 		client.commands.get('filter').execute(message, args, distube, command);
+	}
+
+	//rank checking commands
+	if(command === 'rank'){
+		client.commands.get('check rank').execute(message);
+	}
+	if(command === 'lb'){
+		client.commands.get('leaderboard').execute(message, Levels);
 	}
 });
 

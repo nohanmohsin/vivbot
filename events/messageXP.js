@@ -1,7 +1,7 @@
 module.exports = {
 
 	name: 'xp event',
-	description: "",
+	description: "give xp to user",
 	async execute(message){
         const randomAmountOfXp = Math.floor(Math.random() * 30) + 1; // Min 1, Max 30
 		const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp)
