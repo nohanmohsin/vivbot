@@ -3,8 +3,9 @@ require('dotenv').config()
 const Discord = require('discord.js');
 const DisTube = require('distube');
 const fs = require('fs');
-const Levels = require("discord-xp");
+const Levels = require('discord-xp');
 
+Levels.setURL(process.env.MONGO_DB_URL)
 const client = new Discord.Client({
   partials: ['MESSAGE', 'REACTION', 'CHANNEL']
 });
@@ -31,6 +32,7 @@ for(const folder of commandFolder){
 }
 
 const eventsFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+console.log(eventsFiles);
 //looking through folders inside the events folder
 for(const file of eventsFiles ){
 	const event = require(`./events/${file}`);
@@ -38,16 +40,18 @@ for(const file of eventsFiles ){
 }
 
 client.once('ready', () => {
-    console.log('yeet');
+  console.log('yeet');
+		
 });
  
-client.on('message', message =>{
-	if(!message.content.startsWith(prefix) || message.author.bot) return;
+client.on('message', async(message) =>{
+	if(message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 
-	client.events.get('messageXp').execute(message )
+	client.events.get('xp event').execute(message);
+
 
 	if(command === 'play'){
 		client.commands.get('play').execute(message, args, distube);
@@ -62,7 +66,7 @@ client.on('message', message =>{
 		client.commands.get('queue').execute(message, args, distube);
 	}
 	if (["repeat", "loop"].includes(command)){
-		client.commands.get('repeatLoop').execute(message, args, distube);
+		client.commands.get('repeat or loop').execute(message, args, distube);
 	}
 	if ([`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`].includes(command)){
 		client.commands.get('filter').execute(message, args, distube, command);
