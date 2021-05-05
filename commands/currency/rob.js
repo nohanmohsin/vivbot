@@ -18,7 +18,7 @@ module.exports = {
             user2: user,
             guild: message.guild,
             minAmount: 100,
-            successPercentage: 5,
+            successPercentage: user,
             cooldown: 25 //25 seconds
         });
 
