@@ -49,12 +49,18 @@ client.once('ready', () => {
 });
  
 client.on('message', async(message) =>{
+
 	if(message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 
 	client.events.get('xp event').execute(message, Levels);
+
+	//help command
+	if(command === 'help'){
+		client.commands.get('help').execute(message, args)
+	}
 
 	//music commands
 	if(command === 'play'){
