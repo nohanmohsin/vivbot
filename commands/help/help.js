@@ -1,5 +1,6 @@
-
-
+const music = require('./musicHelp');
+const currency = require('./currencyHelp');
+const rank = require('./rankHelp')
 const Discord = require('discord.js');
 const embed = new Discord.MessageEmbed();
 
@@ -18,17 +19,26 @@ module.exports = {
 			.addFields(
 				{ name: `🎶**music Commands/music**
 				`, value: `*all the music commands*
-				**9 commands**`, inline: true },
+				**11 commands**`, inline: true },
 				{name: ' 💰**currency Commands**', value: `*use our digital currency with these commands*
-				**3 commands**`, inline: true},
+				**9 commands**`, inline: true},
 				{ name: `📈**rank Commands**
 				`, value: `*check your rank in the server*
-				**3 commands**`, inline: true }
-      		)
+				**2 commands**`, inline: true }
+	  		)
 			message.channel.send(embed)
 		}
+
 		if(args[0].toLowerCase() == 'music'){
-			//kalke asbe :)
+			music.execute(message, embed)
+		}
+
+		if(args[0].toLowerCase() == 'currency'){
+			currency.execute(message, embed)
+		}
+
+		if(args[0].toLowerCase() == 'rank'){
+			rank.execute(message, embed)
 		}
 	}
 }

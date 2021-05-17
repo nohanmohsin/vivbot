@@ -84,17 +84,17 @@ client.on('message', async(message) =>{
 
 	//rank checking commands
 	if(command === 'rank'){
-		client.commands.get('check rank').execute(message);
+		client.commands.get('check rank').execute(message, Levels);
 	}
 	if(command === 'lb'){
-		client.commands.get('leaderboard').execute(message, Levels);
+		client.commands.get('leaderboard').execute(message,client,  Levels);
 	}
 
 	//currency commands
 	if(command === 'addmoney'){
 		client.commands.get('add money').execute(message, args, cs)
 	}
-	if(command === 'moneylead'){
+	if(command === 'moneylb'){
 		client.commands.get('money leaderboard').execute(client, message, args, cs)
 	}
 	if(command === 'bal'){

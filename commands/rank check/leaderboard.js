@@ -1,7 +1,7 @@
 module.exports = {
     name: 'leaderboard',
     description: 'check leaderboard',
-    async execute(message, Levels){
+    async execute(message, client, Levels){
         const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id, 10); // We grab top 10 users with most xp in the current server.
 
         if (rawLeaderboard.length < 1) return reply("Nobody's in leaderboard yet.");

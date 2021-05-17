@@ -2,7 +2,7 @@ module.exports = {
 
 	name: 'check rank',
 	description: "check the rank of the user",
-	async execute(message){
+	async execute(message, Levels){
         const target = message.mentions.users.first() || message.author; // Grab the target.
 
         const user = await Levels.fetch(target.id, message.guild.id); // Selects the target from the database.
