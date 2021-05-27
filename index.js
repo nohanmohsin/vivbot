@@ -118,6 +118,12 @@ client.on('message', async(message) =>{
 	if(command === 'work'){
 		client.commands.get('work').execute(message, args, cs)
 	}
+
+	//game commands
+	if(command === 'trivia'){
+		client.commands.get('trivia').execute(message, embed)
+	}
+	
 });
 
 distube
