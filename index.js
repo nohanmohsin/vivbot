@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 const DisTube = require('distube');
 const fs = require('fs');
 const Levels = require('discord-xp');
+const { Canvas } = require('canvacord');
 const CurrencySystem = require("currency-system");
 const cs = new CurrencySystem;
 const connect = cs.connect;
@@ -13,6 +14,7 @@ const client = new Discord.Client({
   partials: ['MESSAGE', 'REACTION', 'CHANNEL']
 });
 const embed = new Discord.MessageEmbed();
+const attachment = new Discord.MessageAttachment();
 const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true });
 const prefix = '!';
 
@@ -124,6 +126,10 @@ client.on('message', async(message) =>{
 		client.commands.get('trivia').execute(message, embed)
 	}
 	
+	//fun commands
+	if(command === 'trigger'){
+		client.commands.get('triggered').execute(message, Canvas);
+	}
 });
 
 distube
