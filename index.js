@@ -14,7 +14,6 @@ const client = new Discord.Client({
   partials: ['MESSAGE', 'REACTION', 'CHANNEL']
 });
 const embed = new Discord.MessageEmbed();
-const attachment = new Discord.MessageAttachment();
 const distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true });
 const prefix = '!';
 
@@ -129,6 +128,22 @@ client.on('message', async(message) =>{
 	//fun commands
 	if(command === 'trigger'){
 		client.commands.get('triggered').execute(message, Canvas);
+	}
+
+	if(command === 'mindchng'){
+		client.commands.get('changeMind').execute(message, args, Canvas);
+	}
+
+	if(command === 'fuse'){
+		client.commands.get('fuse').execute(message, Canvas)
+	}
+
+	if(command === 'facepalm'){
+		client.commands.get('facepalm').execute(message, Canvas);
+	}
+
+	if(command === 'rip'){
+		client.commands.get('rip').execute(message, Canvas)
 	}
 });
 
