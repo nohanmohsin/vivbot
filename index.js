@@ -5,6 +5,7 @@ const DisTube = require('distube');
 const fs = require('fs');
 const Levels = require('discord-xp');
 const { Canvas } = require('canvacord');
+const minigames = require('discord-minigames')
 const CurrencySystem = require("currency-system");
 const cs = new CurrencySystem;
 const connect = cs.connect;
@@ -124,7 +125,9 @@ client.on('message', async(message) =>{
 	if(command === 'trivia'){
 		client.commands.get('trivia').execute(message, embed)
 	}
-	
+	if(command === 'battle'){
+		client.commands.get('battle').execute(message, minigames)
+	}
 	//fun commands
 	if(command === 'trigger'){
 		client.commands.get('triggered').execute(message, Canvas);
@@ -144,6 +147,14 @@ client.on('message', async(message) =>{
 
 	if(command === 'rip'){
 		client.commands.get('rip').execute(message, Canvas)
+	}
+
+	if(command === 'kiss'){
+		client.commands.get('kiss( ͡° ͜ʖ ͡°)').execute(message, Canvas)
+	}
+
+	if(command === 'slap'){
+		client.commands.get('slap').execute(message, Canvas)
 	}
 });
 

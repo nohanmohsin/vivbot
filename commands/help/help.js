@@ -1,6 +1,6 @@
-const music = require('./musicHelp');
-const currency = require('./currencyHelp');
-const rank = require('./rankHelp')
+const musicHelp = require('./musicHelp');
+const currencyHelp = require('./currencyHelp');
+const rankHelp = require('./rankHelp')
 const Discord = require('discord.js');
 const embed = new Discord.MessageEmbed();
 
@@ -30,15 +30,15 @@ module.exports = {
 		}
 
 		if(args[0].toLowerCase() == 'music'){
-			music.execute(message, embed)
+			musicHelp.execute(message, embed)
 		}
 
 		if(args[0].toLowerCase() == 'currency'){
-			currency.execute(message, embed)
+			currencyHelp.execute(message, embed)
 		}
 
 		if(args[0].toLowerCase() == 'rank'){
-			rank.execute(message, embed)
+			rankHelp.execute(message, embed)
 		}
 	}
 }

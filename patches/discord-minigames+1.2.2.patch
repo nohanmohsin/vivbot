@@ -1,0 +1,34 @@
+diff --git a/node_modules/discord-minigames/src/battle.js b/node_modules/discord-minigames/src/battle.js
+index e4c26f6..5573f9f 100644
+--- a/node_modules/discord-minigames/src/battle.js
++++ b/node_modules/discord-minigames/src/battle.js
+@@ -40,7 +40,7 @@ async function createBattle(member, message) {
+         return message.reply(
+             "You can't play with yourself!"
+         );
+-    if (member.user.bot) return message.reply("Bots can't play!");
++    
+     return start(member, message.channel, message.author.id, member.id, message);
+ 
+     //
+@@ -50,16 +50,16 @@ async function createBattle(member, message) {
+                 `Hey ${member}! ${message.author} has challenged you to a battle, do you accept?`
+             )
+             .then(async msg => {
+-                await msg.react("âœ…");
+-                await msg.react("âŒ");
++                await msg.react("✅");
++                await msg.react("❌");
+                 const filter = (reaction, user) =>
+-                    reaction.emoji.name === "âŒ" && user.id === playerTwo;
++                    reaction.emoji.name === "❌" && user.id === playerTwo;
+                 const no = msg.createReactionCollector(filter, {
+                     time: 15000,
+                     max: 1
+                 });
+                 const filter2 = (reaction, user) =>
+-                    reaction.emoji.name === "âœ…" && user.id === playerTwo;
++                    reaction.emoji.name === "✅" && user.id === playerTwo;
+                 const yes = msg.createReactionCollector(filter2, {
+                     time: 15000,
+                     max: 1
