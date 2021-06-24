@@ -5,7 +5,9 @@ const DisTube = require('distube');
 const fs = require('fs');
 const Levels = require('discord-xp');
 const { Canvas } = require('canvacord');
-const minigames = require('discord-minigames')
+const minigames = require('discord-minigames');
+const reconlx = require('reconlx');
+const SnakeGame = require('snakecord');
 const CurrencySystem = require("currency-system");
 const cs = new CurrencySystem;
 const connect = cs.connect;
@@ -127,6 +129,12 @@ client.on('message', async(message) =>{
 	}
 	if(command === 'battle'){
 		client.commands.get('battle').execute(message, minigames)
+	}
+	if(command === 'tictactoe'){
+		client.commands.get('tictactoe').execute(message, reconlx);
+	}
+	if(command === 'snake'){
+		client.commands.get('snake').execute(message, SnakeGame);
 	}
 	//fun commands
 	if(command === 'trigger'){
